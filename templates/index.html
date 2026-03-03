@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crack & Pothole Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚧 Road Damage Detection</h1>
+    <p>Upload a road image to detect cracks and potholes</p>
+
+    <form action="/predict-ui" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Detect</button>
+    </form>
+
+    {% if output_image %}
+        <h2>Detection Result</h2>
+        <img src="{{ url_for('static', filename=output_image) }}" class="result-img">
+    {% endif %}
+</div>
+
+</body>
+</html>
